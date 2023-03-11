@@ -5,11 +5,13 @@ const port = 3000
 const livereload = require("livereload");
 
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public'));
- 
+liveReloadServer.watch(path.join(__dirname, 'public/images'));
+liveReloadServer.watch(path.join(__dirname, 'views'));
+liveReloadServer.watch(path.join(__dirname, 'public/css'));
 
 const connectLivereload = require("connect-livereload");
 const app = express()
+app.use( express.static( "public" ) );
 app.set('view engine', 'ejs')
 app.use(connectLivereload());
  
@@ -19,24 +21,14 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 }); 
 
-
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('index');
 })
 
 app.get('/home', (req, res) => {
     res.send('home page')
 })
   
-
-app.get('/index', (req, res) => {
-  res.render('index');
-})
-
-app.get('/test', (req, res) => {
-    res.send('test')
-})
-
 app.use((req,res,next) => {
     res.status(404).send('error')
 })

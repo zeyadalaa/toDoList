@@ -1,0 +1,30 @@
+
+.container{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    padding: 20px;
+    border-radius: 20px;
+    width: 20%;
+    text-align: center;
+    background-color: rgba(180, 154, 231, 0.667);
+    display: block;
+    margin: auto;
+}
+.bottonAddToDo img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+h1{
+    letter-spacing: 2px;
+}
+.bottonAddToDo {
+    border: solid 1px red;
+    color: white;
+    background-color: rgb(89, 0, 255);
+    padding: 5px 10px;
+    margin: 9%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,12 +1,17 @@
 const express = require('express')
+const mongoose = require("mongoose");
 const path = require('path');
 const port = 3000
-//auto refresh
 const livereload = require("livereload");
 
+//import files
+
+
+//auto refresh
 const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, 'public/assets/images'));
 liveReloadServer.watch(path.join(__dirname, 'views'));
+liveReloadServer.watch(path.join(__dirname, 'models'));
 liveReloadServer.watch(path.join(__dirname, 'public/css'));
 
 const connectLivereload = require("connect-livereload");
@@ -21,6 +26,23 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 }); 
 
+
+//MongoDB connection
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://zeyadalaa:uRpU5pMAZvUasVsa@cluster0.b8dat8c.mongodb.net/task?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect().then(
+  app.listen(port, () => {
+    console.log(`Example app listening on port at http://localhost:${port}`)
+  })
+).catch((err)=>{
+    console.log(err)
+});
+
+
+
+
 app.get('/', (req, res) => {
   res.render('index');
 })
@@ -34,6 +56,3 @@ app.use((req,res,next) => {
 })
   
   
-app.listen(port, () => {
-  console.log(`Example app listening on port at http://localhost:${port}`)
-})

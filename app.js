@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
   res.render('index');
 })
 
-app.get('/home', (req, res) => {
-    res.send('home page')
+app.get('/addtodo', (req, res) => {
+    res.render('addtodo')
 })
   
 app.use((req,res,next) => {

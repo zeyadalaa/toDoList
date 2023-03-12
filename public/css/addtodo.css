@@ -1,0 +1,10 @@
+.bottonAddToDo {
+    color: black;
+    background-color: violet;
+}
+input{
+    border: none;
+    min-height: 40px;
+    min-width: 70%;
+    max-width: 80%;
+}

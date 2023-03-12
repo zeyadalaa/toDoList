@@ -18,9 +18,9 @@ h1{
     letter-spacing: 2px;
 }
 .bottonAddToDo {
-    border: solid 1px red;
     color: white;
     background-color: rgb(89, 0, 255);
+    border-radius: 20px;
     padding: 5px 10px;
     margin: 9%;
     text-decoration: none;

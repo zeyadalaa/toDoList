@@ -5,7 +5,7 @@ const port = 3000
 const livereload = require("livereload");
 
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public/images'));
+liveReloadServer.watch(path.join(__dirname, 'public/assets/images'));
 liveReloadServer.watch(path.join(__dirname, 'views'));
 liveReloadServer.watch(path.join(__dirname, 'public/css'));
 

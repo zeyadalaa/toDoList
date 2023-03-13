@@ -3,8 +3,10 @@ const mongoose = require("mongoose");
 const path = require('path');
 const port = 3000
 const livereload = require("livereload");
+const bodyParser = require('body-parser');
 
 //import files
+const taskController = require("./controllers/taskController");
 
 
 //auto refresh
@@ -19,6 +21,7 @@ const app = express()
 app.use( express.static( "public" ) );
 app.set('view engine', 'ejs')
 app.use(connectLivereload());
+app.use(bodyParser.urlencoded({ extended: true }));
  
 liveReloadServer.server.once("connection", () => {
   setTimeout(() => {
@@ -30,17 +33,14 @@ liveReloadServer.server.once("connection", () => {
 //MongoDB connection
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://zeyadalaa:uRpU5pMAZvUasVsa@cluster0.b8dat8c.mongodb.net/task?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect().then(
+const uri = "mongodb+srv://zeyadalaa:kF6RqA4PVtBziM3m@todotasks.zmkram0.mongodb.net/todoTasks?retryWrites=true&w=majority";
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   app.listen(port, () => {
     console.log(`Example app listening on port at http://localhost:${port}`)
-  })
-).catch((err)=>{
-    console.log(err)
+  });
+}).catch((err) => {
+  console.log(err);
 });
-
-
 
 
 app.get('/', (req, res) => {
@@ -50,6 +50,9 @@ app.get('/', (req, res) => {
 app.get('/addtodo', (req, res) => {
     res.render('addtodo')
 })
+
+app.post('/addtodo', taskController.createTask)
+
   
 app.use((req,res,next) => {
     res.status(404).send('error')

@@ -11,11 +11,14 @@
     <div class="add-ToDo">
         <div class="container">
             <h1>Add Todo</h1>
-            <input type="text">
-            <a href="/" class="bottonAddToDo"> 
-                <img src="/assets/images/plus icon.png" alt="new img">
-                Add Todo
-            </a>
+            <form id="form" action="/addtodo" method="POST">
+                <input name="task" type="text">
+                <button class="bottonAddToDo"> 
+                    <img src="/assets/images/plus icon.png" alt="new img">
+                    Add Todo
+                </button>
+              </form>
+
             <a href="/" class="bottonAddToDo"> 
                 Cancel
             </a>

@@ -1,5 +1,7 @@
 .bottonAddToDo {
     color: black;
+    border: none;
+    font-weight: bold;
     background-color: violet;
 }
 input{
@@ -7,4 +9,7 @@ input{
     min-height: 40px;
     min-width: 70%;
     max-width: 80%;
+}
+#taskIDbutton{
+    width: 75% ;
 }

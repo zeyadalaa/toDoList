@@ -15,7 +15,17 @@
                 <img src="/assets/images/plus icon.png" alt="new img">
                 Add Todo
             </a>
-            <h3>No plan today.</h3>
+            <% if (!todos) {%>
+                <h3>No plan today.</h3>
+            <% }else {
+                var i = 0    
+            %>
+                <% todos.forEach((task) => { %>
+                    <p>
+                    <%= i+1 %> - <%= task.task %>
+                    </p>
+                <% }); %>
+            <% } %>
 
         </div>
 

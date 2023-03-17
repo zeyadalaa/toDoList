@@ -21,10 +21,25 @@
                 var i = 0    
             %>
                 <% todos.forEach((task) => { %>
-                    <p>
-                    <%= i+1 %> - <%= task.task %>
-                    </p>
-                <% }); %>
+                    <div class="tasks-todo">
+                        <div class="task-text">
+                            <p>
+                                <%= i+1 %> - <%= task.task %>
+                            </p>
+                        </div>
+                        <div class="task-buttons">
+                            <a href="/editToDo/<%= task._id %>">
+                                <img src="/assets/images/edit icon.png" alt="edit img">
+                            </a>
+                            
+                            <form action="/?_method=DELETE" method="post">
+                                <input type="hidden" name="_id" value="<%= task._id %>">
+                                <button type="submit" onclick="return confirm('You sure you want to delete this todo?');"><img src="/assets/images/delete icon.png" alt="new img"> </button>
+                            </form>
+                        </div>
+                    </div>
+                <% i++
+                }); %>
             <% } %>
 
         </div>

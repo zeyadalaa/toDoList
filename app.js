@@ -43,9 +43,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then(
 });
 
 
-app.get('/', (req, res) => {
-  res.render('index');
-})
+app.get("/", taskController.findAllTasks);
 
 app.get('/addtodo', (req, res) => {
     res.render('addtodo')

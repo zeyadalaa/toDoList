@@ -1,4 +1,5 @@
 const express = require('express')
+const app = express()
 const mongoose = require("mongoose");
 const path = require('path');
 const port = 3000
@@ -8,6 +9,9 @@ const bodyParser = require('body-parser');
 //import files
 const taskController = require("./controllers/taskController");
 
+//middleware
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 //auto refresh
 const liveReloadServer = livereload.createServer();
@@ -17,7 +21,6 @@ liveReloadServer.watch(path.join(__dirname, 'models'));
 liveReloadServer.watch(path.join(__dirname, 'public/css'));
 
 const connectLivereload = require("connect-livereload");
-const app = express()
 app.use( express.static( "public" ) );
 app.set('view engine', 'ejs')
 app.use(connectLivereload());
@@ -50,6 +53,8 @@ app.get('/addtodo', (req, res) => {
 })
 
 app.post('/addtodo', taskController.createTask)
+
+app.delete('/', taskController.deleteTask)
 
   
 app.use((req,res,next) => {

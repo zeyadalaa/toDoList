@@ -17,9 +17,17 @@ exports.createTask = (req,res) => {
 exports.findAllTasks = async (req,res) => {
     try{
         const todos =  await Task.find({})
-        res.render("index",{todos})
+        res.render("index", { todos: todos || [] });
     }catch (err){
         console.error(err);
         res.status(500).send("Error retrieving tasks");
     }
+}
+
+exports.deleteTask = async (req,res) => {
+    const task = await Task.findByIdAndDelete(req.body._id).then((result)=>{
+        res.redirect('/');
+    }).catch((err)=>{
+        console.log(err)
+    })
 }

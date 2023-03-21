@@ -56,6 +56,12 @@ app.post('/addtodo', taskController.createTask)
 
 app.delete('/', taskController.deleteTask)
 
+app.get('/editToDo/:id', taskController.updateTask)
+
+app.put('/tasks/:id', taskController.updateTaskById);
+
+
+
   
 app.use((req,res,next) => {
     res.status(404).send('error')

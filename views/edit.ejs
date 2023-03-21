@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/addtodo.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="add-ToDo">
+        <div class="container">
+            <h1>Edit Todo</h1>
+            <form id="form" action="/tasks/<%= task._id %>?_method=put" method="POST">
+                <input type="hidden" name="_id" value="PUT">
+                <input name="task" type="text" value="<%= task.task %>" required>
+                <button class="bottonAddToDo" id="taskIDbutton">
+                    <img src="/assets/images/edit icon.png" alt="new img">
+                    Edit Todo
+                </button>
+            </form>
+            
+            <a href="/" class="bottonAddToDo"> 
+                Cancel
+            </a>
+
+        </div>
+    </div>
+    
+</body>
+</html>

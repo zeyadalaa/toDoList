@@ -4,7 +4,6 @@ const Task = require("../models/taskModel")
 // Create documents
 exports.createTask = (req,res) => {
     const task = new Task(req.body)
-    console.log(req.body); 
     task.save().then(() => {
         res.redirect("/")
     }).catch((err) => {
@@ -31,3 +30,20 @@ exports.deleteTask = async (req,res) => {
         console.log(err)
     })
 }
+exports.updateTask = async (req,res) => {
+    const task = await Task.findById(req.params.id)
+    res.render("edit",{task})
+}
+
+exports.updateTaskById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { task } = req.body;
+      console.error(task);
+      const updatedTask = await Task.findByIdAndUpdate(id, { task });
+      res.redirect('/');
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error updating task');
+    }
+  };
